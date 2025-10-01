@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Requirement Form - Logistics</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="services.css">
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="form-container">
+        <header>
+            <div class="logo-container">
+                <img src="logo2.png" alt="Global Logistic Portal Logo" class="header-logo">
+            </div>
+            <h1>Product Requirement Form</h1>
+            <p>Please fill out the details below to help us process your shipment.</p>
+        </header>
+
+        <form action="#" method="POST">
+            <!-- Contact Information Section -->
+            <fieldset>
+                <legend>Contact Information</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="e.g., John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" name="companyName" placeholder="e.g., Global Imports Inc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="e.g., john.doe@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g., +1 234 567 890" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Shipment Details Section -->
+            <fieldset>
+                <legend>Shipment Details</legend>
+                <div class="form-group radio-group">
+                    <label>Shipment Type</label>
+                    <div class="radio-options">
+                        <label for="import"><input type="radio" id="import" name="shipmentType" value="import" checked> Import</label>
+                        <label for="export"><input type="radio" id="export" name="shipmentType" value="export"> Export</label>
+                    </div>
+                </div>
+                 <div class="form-group radio-group">
+                    <label>Mode of Transport</label>
+                    <div class="radio-options">
+                        <label for="sea"><input type="radio" id="sea" name="transportMode" value="sea" checked> Sea Freight</label>
+                        <label for="air"><input type="radio" id="air" name="transportMode" value="air"> Air Freight</label>
+                        <label for="road"><input type="radio" id="road" name="transportMode" value="road"> Road Transport</label>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="originCountry">Origin Country</label>
+                        <input type="text" id="originCountry" name="originCountry" placeholder="e.g., China" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="originPort">Origin City / Port</label>
+                        <input type="text" id="originPort" name="originPort" placeholder="e.g., Shanghai" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destCountry">Destination Country</label>
+                        <input type="text" id="destCountry" name="destCountry" placeholder="e.g., United States" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destPort">Destination City / Port</label>
+                        <input type="text" id="destPort" name="destPort" placeholder="e.g., Los Angeles" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Product Information Section -->
+            <fieldset>
+                <legend>Product Information</legend>
+                 <div class="form-group">
+                    <label for="productDescription">Product Description</label>
+                    <input type="text" id="productDescription" name="productDescription" placeholder="e.g., Electronics, Textiles" required>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="hsCode">HS Code (Optional)</label>
+                        <input type="text" id="hsCode" name="hsCode" placeholder="e.g., 8517.12">
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Total Weight (kg)</label>
+                        <input type="number" id="weight" name="weight" placeholder="e.g., 500" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="quantity">Quantity / Units</label>
+                        <input type="number" id="quantity" name="quantity" placeholder="e.g., 100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensions">Dimensions (L x W x H cm)</label>
+                        <input type="text" id="dimensions" name="dimensions" placeholder="e.g., 120 x 80 x 100">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Additional Information Section -->
+            <fieldset>
+                <legend>Additional Information</legend>
+                <div class="form-group">
+                    <label for="instructions">Special Instructions or Comments</label>
+                    <textarea id="instructions" name="instructions" rows="5" placeholder="e.g., Fragile items, requires temperature control, etc."></textarea>
+                </div>
+            </fieldset>
+            
+            <!-- Submit Button -->
+            <div class="form-group submit-group">
+                <button type="submit" class="submit-btn">Submit Requirement</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
