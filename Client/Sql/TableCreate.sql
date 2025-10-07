@@ -17,5 +17,6 @@ CREATE TABLE Shipment_Details (
     Quantity INT NOT NULL,
     Dimensions VARCHAR(50),
     Instructions TEXT,
-    Submitted_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    Shipment_Charge DECIMAL(10,2) NOT NULL,
+    Shipment_Time DATE NOT NULL
 );
