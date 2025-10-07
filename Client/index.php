@@ -13,7 +13,7 @@ switch ($path) {
         require 'pages/login.html';
         break;
     case "$root/Service":
-        require 'pages/Services.html';
+        require 'pages/Services.php';
         break;
     case "$root/Insert":
         require 'Services/Insert.php';

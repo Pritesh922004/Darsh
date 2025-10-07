@@ -1,18 +1,29 @@
+<?php
+require 'Utils/tosted.php';
+$status = isset($_GET['status']) ? $_GET['status'] : '';
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Requirement Form - Logistics</title>
     <!-- Link to the external CSS file -->
-    <link rel="stylesheet" href="CSS/services.css">
+    <link rel="stylesheet" href="CSS/services.css?v=<?php echo time(); ?>">
     <!-- Google Fonts - Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
 
+<body>
+    <?php if ($status === 'success') { ?>
+        <div class="success-message">Record Added Successfully</div>
+    <?php } ?>
+    <?php if ($status === 'failed') { ?>
+        <div class="field-error">Record Not Inserted</div>
+    <?php } ?>
     <div class="form-container">
         <header>
             <div class="logo-container">
@@ -52,16 +63,21 @@
                 <div class="form-group radio-group">
                     <label>Shipment Type</label>
                     <div class="radio-options">
-                        <label for="import"><input type="radio" id="import" name="shipmentType" value="import" checked> Import</label>
-                        <label for="export"><input type="radio" id="export" name="shipmentType" value="export"> Export</label>
+                        <label for="import"><input type="radio" id="import" name="shipmentType" value="import" checked>
+                            Import</label>
+                        <label for="export"><input type="radio" id="export" name="shipmentType" value="export">
+                            Export</label>
                     </div>
                 </div>
-                 <div class="form-group radio-group">
+                <div class="form-group radio-group">
                     <label>Mode of Transport</label>
                     <div class="radio-options">
-                        <label for="sea"><input type="radio" id="sea" name="transportMode" value="Sea Freight" checked> Sea Freight</label>
-                        <label for="air"><input type="radio" id="air" name="transportMode" value="Air Freight"> Air Freight</label>
-                        <label for="road"><input type="radio" id="road" name="transportMode" value="Road Transport"> Road Transport</label>
+                        <label for="sea"><input type="radio" id="sea" name="transportMode" value="Sea Freight" checked>
+                            Sea Freight</label>
+                        <label for="air"><input type="radio" id="air" name="transportMode" value="Air Freight"> Air
+                            Freight</label>
+                        <label for="road"><input type="radio" id="road" name="transportMode" value="Road Transport">
+                            Road Transport</label>
                     </div>
                 </div>
                 <div class="form-grid">
@@ -75,7 +91,8 @@
                     </div>
                     <div class="form-group">
                         <label for="destCountry">Destination Country</label>
-                        <input type="text" id="destCountry" name="destCountry" placeholder="e.g., United States" required>
+                        <input type="text" id="destCountry" name="destCountry" placeholder="e.g., United States"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="destPort">Destination City / Port</label>
@@ -87,9 +104,10 @@
             <!-- Product Information Section -->
             <fieldset>
                 <legend>Product Information</legend>
-                 <div class="form-group">
+                <div class="form-group">
                     <label for="productDescription">Product Description</label>
-                    <input type="text" id="productDescription" name="productDescription" placeholder="e.g., Electronics, Textiles" required>
+                    <input type="text" id="productDescription" name="productDescription"
+                        placeholder="e.g., Electronics, Textiles" required>
                 </div>
                 <div class="form-grid">
                     <div class="form-group">
@@ -100,7 +118,7 @@
                         <label for="weight">Total Weight (kg)</label>
                         <input type="number" id="weight" name="weight" placeholder="e.g., 500" required>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="quantity">Quantity / Units</label>
                         <input type="number" id="quantity" name="quantity" placeholder="e.g., 100" required>
                     </div>
@@ -116,10 +134,11 @@
                 <legend>Additional Information</legend>
                 <div class="form-group">
                     <label for="instructions">Special Instructions or Comments</label>
-                    <textarea id="instructions" name="instructions" rows="5" placeholder="e.g., Fragile items, requires temperature control, etc."></textarea>
+                    <textarea id="instructions" name="instructions" rows="5"
+                        placeholder="e.g., Fragile items, requires temperature control, etc."></textarea>
                 </div>
             </fieldset>
-            
+
             <!-- Submit Button -->
             <div class="form-group submit-group">
                 <button type="submit" class="submit-btn">Submit Requirement</button>
@@ -129,10 +148,23 @@
 
 </body>
 <script>
-    const url = new URLSearchParams(window.location.search);
-    const message = url.get('status');
-    if (message) {
-        alert(message);
+    const successMessage = document.querySelector('.success-message, .field-error');
+    if (successMessage) {
+        setTimeout(() => {
+            successMessage.remove();
+            removeUrlParameter('status');
+        }, 3000);
+    }
+    function removeUrlParameter(parameter) {
+        // Create a URL object from the current URL
+        const url = new URL(window.location.href);
+
+        // Use the searchParams API to delete the specified parameter
+        url.searchParams.delete(parameter);
+
+        // Update the URL in the browser without reloading the page
+        window.history.replaceState({}, '', url.toString());
     }
 </script>
-</html>     
+
+</html>
